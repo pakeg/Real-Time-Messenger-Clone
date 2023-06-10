@@ -8,7 +8,7 @@ export default async function UserLayout({
   return (
     // @ts-expect-error Server Component
     <Sidebar>
-      <div>children</div>
+      <div>{children}</div>
     </Sidebar>
   );
 }

@@ -48,11 +48,13 @@ export const authOptions: AuthOptions = {
         if (!isCorrectPassword) {
           throw new Error("Invalid credentials");
         }
-
         return user;
       },
     }),
   ],
+  pages: {
+    signIn: "/",
+  },
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",

@@ -10,7 +10,7 @@ import Avatar from "../Avatar";
 const DesktopSidebar = ({ currentUser }: { currentUser: User | null }) => {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
-
+  
   return (
     <div
       className="
