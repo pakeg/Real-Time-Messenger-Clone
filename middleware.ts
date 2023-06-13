@@ -9,5 +9,10 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/users", "/users/:path*"],
+  matcher: [
+    "/users",
+    "/users/:path*",
+    "/conversations",
+    "/conversations/:path*",
+  ],
 };
