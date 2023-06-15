@@ -8,8 +8,8 @@ interface IInputComponentProps {
   id: string;
   type?: string;
   required?: boolean;
-  register?: boolean;
-  errors: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
   disabled?: boolean;
 }
 
@@ -37,7 +37,8 @@ const InputComponent: React.FC<IInputComponentProps> = ({
           autoComplete={id}
           disabled={disabled}
           {...register(id, { required })}
-          className={clsx(`
+          className={clsx(
+            `
             form-input
             block
             w-full
@@ -55,8 +56,10 @@ const InputComponent: React.FC<IInputComponentProps> = ({
             focus:ring-sky-600
             sm:text-sm
             sm:leading-6
-          `, errors[id] && "focus:ring-rose-500",
-          disabled && "opacity-50 cursor-default")}
+          `,
+            errors[id] && "focus:ring-rose-500",
+            disabled && "opacity-50 cursor-default"
+          )}
         />
       </div>
     </div>
