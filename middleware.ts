@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export default async function middleware(req: NextRequest) {
-  if (!req.cookies.has("next-auth.session-token")) {
+  if (!req.cookies.has("__Secure-next-auth.session-token")) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
