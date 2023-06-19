@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import getSession from "./app/actions/getSession";
+import { useSession } from "next-auth/react";
 
 export default async function middleware(req: NextRequest) {
-  const session = await getSession();
-  if (!session?.user?.email) {
+  const { status } = useSession();
+  if (status !== "authenticated") {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
