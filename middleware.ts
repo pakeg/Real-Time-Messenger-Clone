@@ -1,8 +1,12 @@
-import { default as NextAuthMiddleware } from "next-auth/middleware";
+import { NextRequest, NextResponse } from "next/server";
 
-const middleware = NextAuthMiddleware;
+export default async function middleware(req: NextRequest) {
+  if (!req.cookies.has("next-auth.session-token")) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
 
-export default middleware;
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: [
