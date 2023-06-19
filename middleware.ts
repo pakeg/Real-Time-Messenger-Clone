@@ -1,18 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
+import { withAuth } from "next-auth/middleware";
 
-export default async function middleware(req: NextRequest) {
-  if (!req.cookies.has("next-auth.session-token")) {
-    return NextResponse.redirect(new URL("/", req.url));
-  }
-
-  return NextResponse.next();
-}
+export default withAuth({
+  pages: {
+    signIn: "/",
+  },
+});
 
 export const config = {
-  matcher: [
-    "/users",
-    "/users/:path*",
-    "/conversations",
-    "/conversations/:path*",
-  ],
+  matcher: ["/conversations/:path*", "/users/:path*"],
 };
