@@ -13,6 +13,8 @@ import { useRouter } from 'next/navigation';
 type Variant = "LOGIN" | "REGISTER"
 
 export default function AuthForm(){
+    
+  console.log(document.cookie)
     const session = useSession()
     const router = useRouter()
     const [variant, setVariant] = useState<Variant>("LOGIN")
