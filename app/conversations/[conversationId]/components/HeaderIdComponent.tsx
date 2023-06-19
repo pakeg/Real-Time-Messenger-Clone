@@ -2,8 +2,7 @@
 
 import Avatar from "@/app/components/Avatar";
 import useOtherUser from "@/app/hooks/useOtherUser";
-import { FullConversationType } from "@/app/types";
-import { User } from "@prisma/client";
+import { Conversation, User } from "@prisma/client";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { HiChevronLeft, HiEllipsisHorizontal } from "react-icons/hi2";
@@ -12,8 +11,8 @@ import AvatarGroup from "@/app/components/AvatarGroup";
 import useActiveList from "@/app/hooks/useActiveList";
 
 interface IHeaderIdComponentProps {
-  conversation: FullConversationType & {
-    users: User[];
+  conversation: Conversation & {
+    user: User[];
   };
 }
 
@@ -28,7 +27,7 @@ const HeaderIdComponent: React.FC<IHeaderIdComponentProps> = ({
 
   const statusText = useMemo(() => {
     if (conversation.isGroup) {
-      return `${conversation.users.length} members`;
+      return `${conversation.user.length} members`;
     }
     return isActive ? "active" : "offline";
   }, [conversation, isActive]);

@@ -2,9 +2,8 @@
 
 import Avatar from "@/app/components/Avatar";
 import useOtherUser from "@/app/hooks/useOtherUser";
-import { FullConversationType } from "@/app/types";
 import { Dialog, Transition } from "@headlessui/react";
-import { User } from "@prisma/client";
+import { Conversation, User } from "@prisma/client";
 import { format } from "date-fns";
 import { Fragment, useMemo, useState } from "react";
 import { IoClose, IoTrash } from "react-icons/io5";
@@ -13,8 +12,8 @@ import AvatarGroup from "@/app/components/AvatarGroup";
 import useActiveList from "@/app/hooks/useActiveList";
 
 interface IProfileDrawerProps {
-  data: FullConversationType & {
-    users: User[];
+  data: Conversation & {
+    user: User[];
   };
   isOpen: boolean;
   onClose: () => void;
