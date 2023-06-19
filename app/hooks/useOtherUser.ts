@@ -1,11 +1,8 @@
-import { User } from "@prisma/client";
-import { FullConversationType } from "../types";
+import { Conversation, User } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import { useMemo } from "react";
 
-const useOtherUser = (
-  conversation: FullConversationType | { user: User[] }
-) => {
+const useOtherUser = (conversation: Conversation & { user: User[] }) => {
   const session = useSession();
 
   const otherUser = useMemo(() => {
